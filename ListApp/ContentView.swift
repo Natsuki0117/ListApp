@@ -9,16 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        List{
+            ForEach(Animal.allCases, id: \.self) {animal in
+                NavigationLink(destination: DetailView(animal: animal)){
+                    HStack{
+                        Image(animal.iconName)
+                        Text(animal.name)
+                    }
+                }
+            }
         }
-        .padding()
     }
 }
-
 #Preview {
     ContentView()
 }
